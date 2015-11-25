@@ -73,7 +73,7 @@ public class MovementScript : MonoBehaviour {
 	{
 		Destroy (a);
 		if (PlayerPrefs.GetInt ("Neutrons") > 0) {
-			Application.LoadLevel (Application.loadedLevel);
+			Application.LoadLevel (Application.loadedLevel + 1);
 			PlayerPrefs.SetInt ("Neutrons", PlayerPrefs.GetInt ("Neutrons") - 1);
 		} else {
 			Application.LoadLevel("Derrota");
