@@ -35,6 +35,11 @@ public class MovementScript : MonoBehaviour {
 				//this.transform.Translate(-0.1f,0,0);
 				rigidbody.AddForce (-4f, 0, 0);
 			}
+
+			if (Input.GetKey (KeyCode.Escape)) 
+			{
+				Application.Quit();
+			} 
 		} 
 		else 
 		{
@@ -61,7 +66,7 @@ public class MovementScript : MonoBehaviour {
 	}
 	void OnCollisionEnter(Collision col)
 	{
-		if (col.gameObject.name == "Uranio238" || col.gameObject.name == "Cube") {
+		if (col.gameObject.tag == "Uranio238" || col.gameObject.name == "Cube") {
 			Restart (this.gameObject);
 		} else if (col.gameObject.name == "Uranio235") {
 			Instantiate(this.gameObject);
@@ -76,7 +81,7 @@ public class MovementScript : MonoBehaviour {
 			Application.LoadLevel (Application.loadedLevel + 1);
 			PlayerPrefs.SetInt ("Neutrons", PlayerPrefs.GetInt ("Neutrons") - 1);
 		} else {
-			Application.LoadLevel("Derrota");
+			Application.LoadLevel(Application.loadedLevel);
 		}
 	}
 }
