@@ -1,9 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\GitHub\OficinaII_Equipe8\Assets\Scripts\Level2\clothSelect.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MovementScript.cs">
     <Files>
-      <File FileName="..\GitHub\OficinaII_Equipe8\Assets\Scripts\Level2\clothSelect.cs" Line="42" Column="21" />
-      <File FileName="..\GitHub\OficinaII_Equipe8\Assets\Scripts\Level2\hangerBehaviour.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MovementScript.cs" Line="85" Column="35" />
+      <File FileName="Assets\Scripts\LevelManagment.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\AnimationScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\TextScript.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
