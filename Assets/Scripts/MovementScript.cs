@@ -4,11 +4,16 @@ using System.Collections;
 public class MovementScript : MonoBehaviour {
 
 	public Rigidbody rigidbody;
+	public GameObject kriptonioPrefab;
+	public GameObject barioPrefab;
+	private bool explosion;
+	private int a;
 	// Use this for initialization
 	void Start () {
 		PlayerPrefs.SetInt ("Neutrons", 10);
 		rigidbody = GetComponent<Rigidbody> ();
 		rigidbody.useGravity = false;
+		explosion = false;
 	}
 	
 	// Update is called once per frame
@@ -63,25 +68,31 @@ public class MovementScript : MonoBehaviour {
 			rigidbody.AddForce (-4f, 0, 0);
 			}
 		}
+
 	}
 	void OnCollisionEnter(Collision col)
 	{
-		if (col.gameObject.tag == "Uranio238" || col.gameObject.name == "Cube") {
+		if (col.gameObject.tag == "Uranio238" || col.gameObject.name == "Cube" && !explosion) {
 			Restart (this.gameObject);
-		} else if (col.gameObject.name == "Uranio235") {
-			Instantiate(this.gameObject);
-			Instantiate(GameObject.Find ("Uranio235"));
+		}
+		else if(col.gameObject.tag == "Uranio238" || col.gameObject.name == "Cube" && explosion){
+			Application.LoadLevel(Application.loadedLevel + 1);
+		}
+		else if (col.gameObject.name == "Uranio235") {
+			explosion = true;
+			GameObject kriptonio = Instantiate(kriptonioPrefab, this.gameObject.transform.position,Quaternion.identity) as GameObject;
+			GameObject bario = Instantiate(barioPrefab, this.gameObject.transform.position,Quaternion.identity) as GameObject;
+			if(Application.loadedLevel >= 5)
+			{
+				Application.LoadLevel(Application.loadedLevel + 1);
+			}
 		}
 
 	}
 	void Restart(GameObject a)
 	{
 		Destroy (a);
-		if (PlayerPrefs.GetInt ("Neutrons") > 0) {
-			Application.LoadLevel (Application.loadedLevel + 1);
-			PlayerPrefs.SetInt ("Neutrons", PlayerPrefs.GetInt ("Neutrons") - 1);
-		} else {
-			Application.LoadLevel(Application.loadedLevel);
-		}
+		Application.LoadLevel (Application.loadedLevel);
 	}
+
 }
